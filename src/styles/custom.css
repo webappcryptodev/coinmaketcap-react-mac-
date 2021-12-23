@@ -1,0 +1,49 @@
+.oracle-price{
+    background-color: f8f8fb;
+  }
+  
+  .apexcharts-yaxis, .apexcharts-toolbar{
+    display: none !important;
+  }
+  
+  .chart-description{
+    margin-left: 190px;
+    margin-top: -48px;
+    opacity: 0.5;
+  }
+  
+  .text-oracle{
+    color: #4b47ff;
+  }
+  
+  .text-market{
+    color: #7cd9b8;
+  }
+  
+  .bg-card{
+    background-color: #f8f8fb;
+  }
+  
+  .text-purple-400{
+    color: #8f8fbc !important;
+  }
+  
+  .font-mono{
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif !important;
+  }
+  
+  #SvgjsG1144{
+      display: none;
+  }
+
+  .toolbar{
+      display: none;
+  }
+
+  #chart-timeline{
+      margin-top: -27px;
+  }
+
+  #SvgjsRect1198, #SvgjsText1196, #SvgjsRect1198, #SvgjsRect1092, #SvgjsRect1239, #SvgjsText1232, #SvgjsG1170, .apexcharts-xaxis{
+      display: none;
+  }
