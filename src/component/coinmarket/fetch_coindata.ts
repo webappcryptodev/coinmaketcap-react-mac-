@@ -1,12 +1,17 @@
 import axios from 'axios'
 
-export const fetchData = async () => {
-    let qs = `?start=1&limit=5000&convert=USD`;
+export const fetchData = async() => {
+    let coinData:any;
+    const page = 1;
+    const limit = 10;
     try {
-        let res = await axios.get('https://pro-api.coinmarketcap.com/v1/cryptocurrency/listings/latest' + qs, {
-            headers: { 'X-CMC_PRO_API_KEY': '74b45c73-d6a3-4807-9b51-203d974ad3cb' }
+        let res : any;
+        res = await axios.get(`/top`).then((d:any)=>{
+            // console.log(d.data.data);            
+            coinData = d.data.data;
         });
-        console.log(res);
+        // console.log(coinData);
+        return coinData;
         // return {
         //     cryptos: res.data.slice(0, 50)            
         // }

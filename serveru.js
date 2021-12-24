@@ -1,17 +1,3 @@
-// const express = require("express");
-// // eslint-disable-next-line no-unused-vars
-// // const bodyParser = require('body-parser');
-// const path = require("path");
-// const app = express();
-// const port = process.env.PORT || 8080;
-
-// app.use(express.static(path.join(__dirname, "build")));
-
-// // This route serves the React app
-// app.get('/', (req, res) => res.sendFile(path.resolve(__dirname, "build", "index.html")));
-
-// app.listen(port, () => console.log(`Server listening on port ${port}`));
-
 const express = require("express");
 const axios = require("axios");
 const app = express();
@@ -40,16 +26,15 @@ app.use([express.json({ extended: false }), cors()]);
 // .com/v1/fiat/map
 // .com/v1/fiat/map?start=1&limit=10
 
-app.get("/top", (req, res) => {
-  let page = 43;
-  let limit = 1;
+app.get("/top/:page/:limit", (req, res) => {
+  let page = req.params.page;
+  let limit = req.params.limit;
   axios
     .get(
       `https://pro-api.coinmarketcap.com/v1/cryptocurrency/listings/latest?start=${page}&limit=${limit}`,
       requestopts
     )
     .then(function (response) {
-        console.log(response);
       res.json(response.data);
     })
     .catch(function (error) {

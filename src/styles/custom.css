@@ -16,10 +16,14 @@
     color: #4b47ff;
   }
   
-  .text-market{
+  .text-market-up{
     color: #7cd9b8;
   }
   
+  .text-market-down{
+    color: rgb(219, 61, 61);
+  }
+
   .bg-card{
     background-color: #f8f8fb;
   }
@@ -46,4 +50,10 @@
 
   #SvgjsRect1198, #SvgjsText1196, #SvgjsRect1198, #SvgjsRect1092, #SvgjsRect1239, #SvgjsText1232, #SvgjsG1170, .apexcharts-xaxis{
       display: none;
+  }
+
+  @media (max-width:542px) {
+    .chart-description{
+      display: none;
+    }
   }
