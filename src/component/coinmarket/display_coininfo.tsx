@@ -6,7 +6,7 @@ import "../../styles/custom.css";
 const CoinMarketPrice = () => {
 
     const [Oracle_price, setOracle_price] = useState("");
-    const [Day_pro, setDay_pro] = useState("");
+    const [Day_pro, setDay_pro] = useState("33");
     const [Market_price, setMarket_price] = useState("");
     const [Market_price_pro, setMarket_price_pro] = useState("");
     const [Market_cap, setMarket_cap] = useState("");
@@ -28,14 +28,14 @@ const CoinMarketPrice = () => {
                 setColor("text-market-down");                
             }     
             console.log(HNT_data);
-            setOracle_price((HNT_data[0].quote.USD.price).toFixed(2));
-            setDay_pro((HNT_data[0].quote.USD.percent_change_24h).toFixed(2));       
-            setMarket_price((HNT_data[0].quote.USD.price).toFixed(2));
-            setMarket_price_pro((HNT_data[0].quote.USD.market_cap_dominance).toFixed(2));
-            setMarket_cap(((HNT_data[0].quote.USD.market_cap)/1000000000).toFixed(2));
-            setMarket_cap_pro(((HNT_data[0].quote.USD.volume_24h)/1000000).toFixed(2));
-            setCirculating_supply(((HNT_data[0].circulating_supply)/1000000).toFixed(2));
-            setMax_supply(((HNT_data[0].max_supply)/1000000).toFixed(2));                                                
+            setOracle_price((HNT_data.HNT.quote.USD.price).toFixed(2));
+            setDay_pro((HNT_data.HNT.quote.USD.percent_change_24h).toFixed(2));       
+            setMarket_price((HNT_data.HNT.quote.USD.price).toFixed(2));
+            setMarket_price_pro((HNT_data.HNT.quote.USD.market_cap_dominance).toFixed(2));
+            setMarket_cap(((HNT_data.HNT.quote.USD.market_cap)/1000000000).toFixed(2));
+            setMarket_cap_pro(((HNT_data.HNT.quote.USD.volume_24h)/1000000).toFixed(2));
+            setCirculating_supply(((HNT_data.HNT.circulating_supply)/1000000).toFixed(2));
+            setMax_supply(((HNT_data.HNT.max_supply)/1000000).toFixed(2));                                                
         }, 1000);
         return () => clearInterval(getData);
         // return () => clearInterval(getData);

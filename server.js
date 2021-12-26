@@ -22,7 +22,7 @@ const PORT = process.env.PORT || 5000;
 const requestopts = {
   convert: "USD",
   headers: {
-    "X-CMC_PRO_API_KEY": "fb0fb910-0850-4f4b-9b41-cac24e188187",
+    "X-CMC_PRO_API_KEY": "74b45c73-d6a3-4807-9b51-203d974ad3cb",
   },
 };
 
@@ -41,11 +41,11 @@ app.use([express.json({ extended: false }), cors()]);
 // .com/v1/fiat/map?start=1&limit=10
 
 app.get("/top", (req, res) => {
-  let page = 43;
-  let limit = 1;
+  let page = 1;
+  let limit = 100;
   axios
     .get(
-      `https://pro-api.coinmarketcap.com/v1/cryptocurrency/listings/latest?start=${page}&limit=${limit}`,
+      `https://pro-api.coinmarketcap.com/v1/cryptocurrency/quotes/latest?symbol=HNT`,
       requestopts
     )
     .then(function (response) {

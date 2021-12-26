@@ -9,6 +9,10 @@ export const fetchData = async() => {
         res = await axios.get(`/top`).then((d:any)=>{
             // console.log(d.data.data);            
             coinData = d.data.data;
+            // coinData = d['data'].filter((dd:any)=>dd.data.symbol=='HNT').data;
+            // coinData = d.filter((e:any) => e.name.includes('BNB'));
+            // coinData = d.data;
+            console.log(coinData);
         });
         // console.log(coinData);
         return coinData;
