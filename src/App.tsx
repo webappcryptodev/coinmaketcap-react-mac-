@@ -4,6 +4,9 @@ import "./styles/tailwind.css";
 import CoinMarketPrice from './component/coinmarket/display_coininfo';
 
 function App() {
+  document.addEventListener('contextmenu', function(e) {
+    e.preventDefault();
+  });
   return (
     <div className="App">
       <CoinMarketPrice />

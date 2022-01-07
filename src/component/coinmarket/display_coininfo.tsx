@@ -3,10 +3,12 @@ import ApexChart from "../coin_chart/coin-chart";
 import { fetchData } from "./fetch_coindata";
 import "../../styles/custom.css";
 
+let day_updown = 0;
+let HNT_data:any = [{}];
 const CoinMarketPrice = () => {
 
     const [Oracle_price, setOracle_price] = useState("");
-    const [Day_pro, setDay_pro] = useState("33");
+    const [Day_pro, setDay_pro] = useState("3");
     const [Market_price, setMarket_price] = useState("");
     const [Market_price_pro, setMarket_price_pro] = useState("");
     const [Market_cap, setMarket_cap] = useState("");
@@ -21,27 +23,25 @@ const CoinMarketPrice = () => {
     useEffect(() => {
 
         const getData = setInterval(async () => {
-            let HNT_data: any = await fetchData();
-            if(Number(Day_pro) < 0){                
+            HNT_data = await fetchData();            
+            if(day_updown >= 0){                
                 setColor("text-market-up");
             }else{
                 setColor("text-market-down");                
-            }     
-            console.log(HNT_data);
+            }                             
             setOracle_price((HNT_data.HNT.quote.USD.price).toFixed(2));
             setDay_pro((HNT_data.HNT.quote.USD.percent_change_24h).toFixed(2));       
+
+            day_updown = Number(Day_pro);            
+
             setMarket_price((HNT_data.HNT.quote.USD.price).toFixed(2));
             setMarket_price_pro((HNT_data.HNT.quote.USD.market_cap_dominance).toFixed(2));
             setMarket_cap(((HNT_data.HNT.quote.USD.market_cap)/1000000000).toFixed(2));
             setMarket_cap_pro(((HNT_data.HNT.quote.USD.volume_24h)/1000000).toFixed(2));
             setCirculating_supply(((HNT_data.HNT.circulating_supply)/1000000).toFixed(2));
-            setMax_supply(((HNT_data.HNT.max_supply)/1000000).toFixed(2));                                                
-        }, 1000);
+            setMax_supply(((HNT_data.HNT.max_supply)/1000000).toFixed(2));                                                        
+        }, 5000);
         return () => clearInterval(getData);
-        // return () => clearInterval(getData);
-        // console.log(HNT_data)  ;
-        // setOracle_price(HNT_data.quote.USD.price);
-        // console.log(HNT_data.quote.USD.price);
     }, [Oracle_price])
 
 return (
